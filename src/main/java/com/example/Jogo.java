@@ -27,11 +27,12 @@ public class Jogo {
 
     public boolean acabou() {
 
-        boolean jogadorFinalizou = jogador.parou() || jogador.getPontos() > 21;
+        if (jogador.getPontos() > 21 ||
+                computador.getPontos() > 21) {
+            return true;
+        }
 
-        boolean computadorFinalizou = computador.parou() || computador.getPontos() > 21;
-
-        return jogadorFinalizou && computadorFinalizou;
+        return jogador.parou() && computador.parou();
     }
 
     public String resultado() {
